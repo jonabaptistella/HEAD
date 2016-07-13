@@ -33,6 +33,7 @@ A list of everything that could go in the `<head>` of your document
   - [Performance](#performance)
 - [Other Resources](#other-resources)
 - [Related Projects](#related-projects)
+- [Other Formats](#other-formats)
 - [Translations](#translations)
 - [Contributing](#contributing)
 - [Author](#author)
@@ -69,6 +70,7 @@ Below are the essential tags for basic, minimalist websites:
 
 <!-- JavaScript -->
 <script src="script.js"></script>
+<noscript><!--no JS alternative--></noscript>
 ```
 
 ## Meta
@@ -107,37 +109,16 @@ Below are the essential tags for basic, minimalist websites:
 <!-- Used to name software used to build the website (i.e. - Wordpress, Dreamweaver) -->
 <meta name="generator" content="program">
 
-<!-- Short description of your sites subject -->
+<!-- Short description of your site's subject -->
 <meta name="subject" content="your website's subject">
 
-<!-- Very short sentence describing the purpose of the website -->
+<!-- Very short (10 words or less) description. Primarily for academic papers -->
 <meta name="abstract" content="">
-
-<!-- Describes the topic of the website -->
-<meta name="topic" content="">
-
-<!-- Brief summary of the company or purpose of the website -->
-<meta name="summary" content="">
-
-<!-- A deprecated tag that does the same as the keywords meta tag -->
-<meta name="classification" content="business">
 
 <!-- Full domain name or web address -->
 <meta name="url" content="https://example.com/">
 
-<!-- Does the same as URL, older and not supported -->
-<meta name="identifier-URL" content="https://example.com/">
-
 <meta name="directory" content="submission">
-
-<!-- Does the same function as the keywords tag -->
-<meta name="category" content="">
-
-<!-- Makes sure your website shows up in all countries and languages -->
-<meta name="coverage" content="Worldwide">
-
-<!-- Does the same as the coverage tag -->
-<meta name="distribution" content="Global">
 
 <!-- Gives a general age rating based on sites content -->
 <meta name="rating" content="General">
@@ -147,6 +128,15 @@ Below are the essential tags for basic, minimalist websites:
 
 <!-- Disable automatic detection and formatting of possible phone numbers -->
 <meta name="format-detection" content="telephone=no">
+
+<!-- Completely opt out of DNS prefetching by setting to 'off' -->
+<meta http-equiv="x-dns-prefetch-control" content="off">
+
+<!-- Stores cookie on the client web browser for client identification -->
+<meta http-equiv='set-cookie' content='name=value; expires=date; path=url'>
+
+<!-- Specifies the page to appear in a specific frame -->
+<meta http-equiv="Window-Target" content="_value">
 
 <!-- Geo tags -->
 <meta name="ICBM" content="latitude, longitude">
@@ -161,7 +151,7 @@ Below are the essential tags for basic, minimalist websites:
 - [Geotagging on Wikipedia](https://en.wikipedia.org/wiki/Geotagging#HTML_pages)
 
 ### Meta: Not Recommended
-Below are the meta attributes which are not recommended for use:
+Below are the meta attributes which are not recommended for use as they had low adoption rate, or have been deprecated:
 
 ```html
 <!-- Used to declare the document language, but not well supported. Better to use <html lang=""> -->
@@ -169,7 +159,6 @@ Below are the meta attributes which are not recommended for use:
 
 <!-- Google disregards & Bing considers it an indicator of spam -->
 <meta name="keywords" content="your,keywords,here,comma,separated,no,spaces">
-
 <!-- No evidence of current use in any search engines -->
 <meta name="revised" content="Sunday, July 18th, 2010, 5:15 pm">
 
@@ -187,6 +176,30 @@ Below are the meta attributes which are not recommended for use:
 <!-- Sends user to a new URL after a certain amount of time -->
 <!-- The W3C recommends that this tag not be used. Google recommends using a server-side 301 redirect instead. -->
 <meta http-equiv="refresh" content="300; url=https://example.com/">
+
+<!-- Describes the topic of the website -->
+<meta name="topic" content="">
+
+<!-- Brief summary of the company or purpose of the website -->
+<meta name="summary" content="">
+
+<!-- A deprecated tag that does the same as the keywords meta tag -->
+<meta name="classification" content="business">
+
+<!-- Does the same as URL, older and not supported -->
+<meta name="identifier-URL" content="https://example.com/">
+
+<!-- Similar function to the keywords tag -->
+<meta name="category" content="">
+
+<!-- Makes sure your website shows up in all countries and languages -->
+<meta name="coverage" content="Worldwide">
+
+<!-- Does the same as the coverage tag -->
+<meta name="distribution" content="Global">
+
+<!-- Controls what user can access on the internet -->
+<meta http-equiv="Pics-label" content="value"> 
 
 <!-- Cache Control -->
 <!-- Better to configure cache control server side -->
@@ -551,6 +564,7 @@ Below are the link relations which are not recommended for use:
 Moving the `href` attribute to the beginning of an element improves compression when GZIP is enabled, because the `href` attribute is used in `a`, `base` and `link` tags.
 
 Example:
+
 ``` html
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 ```
@@ -567,8 +581,13 @@ Example:
 - [head-it](https://github.com/hemanth/head-it) - CLI interface for `HEAD` snippets
 - [vue-head](https://github.com/ktquez/vue-head) - Manipulating the meta information of the `HEAD` tag for Vue.js
 
+## Other Formats
+
+- [PDF](https://gitprint.com/joshbuchea/HEAD/blob/master/README.md)
+
 ## Translations
 
+- [Brazilian Portuguese](https://github.com/Webschool-io/HEAD)
 - [Japanese](http://coliss.com/articles/build-websites/operation/work/collection-of-html-head-elements.html)
 - [Russian/Русский](https://github.com/Konfuze/HEAD)
 
