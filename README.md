@@ -76,7 +76,7 @@ Below are the essential tags for basic, minimalist websites:
 ## Meta
 
 ``` html
-<meta charset="utf-8">
+<meta charset="utf-8"> <!-- set character encoding for the document -->
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -106,7 +106,7 @@ Below are the essential tags for basic, minimalist websites:
 <!-- Verify ownership for Google Search Console -->
 <meta name="google-site-verification" content="verification_token">
 
-<!-- Used to name software used to build the website (i.e. - Wordpress, Dreamweaver) -->
+<!-- Used to name software used to build the website (i.e. - WordPress, Dreamweaver) -->
 <meta name="generator" content="program">
 
 <!-- Short description of your site's subject -->
@@ -124,7 +124,7 @@ Below are the essential tags for basic, minimalist websites:
 <meta name="rating" content="General">
 
 <!-- Allows control over how referrer information is passed -->
-<meta name="referrer" content="never">
+<meta name="referrer" content="no-referrer">
 
 <!-- Disable automatic detection and formatting of possible phone numbers -->
 <meta name="format-detection" content="telephone=no">
@@ -133,7 +133,7 @@ Below are the essential tags for basic, minimalist websites:
 <meta http-equiv="x-dns-prefetch-control" content="off">
 
 <!-- Stores cookie on the client web browser for client identification -->
-<meta http-equiv='set-cookie' content='name=value; expires=date; path=url'>
+<meta http-equiv="set-cookie" content="name=value; expires=date; path=url">
 
 <!-- Specifies the page to appear in a specific frame -->
 <meta http-equiv="Window-Target" content="_value">
@@ -199,7 +199,7 @@ Below are the meta attributes which are not recommended for use as they had low 
 <meta name="distribution" content="Global">
 
 <!-- Controls what user can access on the internet -->
-<meta http-equiv="Pics-label" content="value"> 
+<meta http-equiv="Pics-label" content="value">
 
 <!-- Cache Control -->
 <!-- Better to configure cache control server side -->
@@ -264,7 +264,7 @@ Below are the meta attributes which are not recommended for use as they had low 
 <!-- Used when using a 3rd party service to maintain a blog -->
 <link rel="EditURI" href="https://example.com/xmlrpc.php?rsd" type="application/rsd+xml" title="RSD">
 
-<!-- Forms an automated comment when another wordpress blog links to your wordpress blog or post -->
+<!-- Forms an automated comment when another WordPress blog links to your WordPress blog or post -->
 <link rel="pingback" href="https://example.com/xmlrpc.php">
 
 <!-- Notifies a url when you link to it on your site -->
@@ -285,8 +285,7 @@ Below are the meta attributes which are not recommended for use as they had low 
 <link rel="preconnect" href="https://www.example.com/">
 <link rel="prefetch" href="https://www.example.com/">
 <link rel="prerender" href="https://example.com/">
-<link rel="subresource" href="styles.css">
-<link rel="preload" href="image.png">
+<link rel="preload" href="image.png" as="image">
 <!-- More info: https://css-tricks.com/prefetching-preloading-prebrowsing/ -->
 ```
 
@@ -295,6 +294,9 @@ Below are the link relations which are not recommended for use:
 
 ```html
 <link rel="shortcut icon" href="path/to/favicon.ico">
+
+<!-- Not useful, proprietary and buggy, see https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/Y_2eFRh9BOs/gULYapoRBwAJ -->
+<link rel="subresource" href="styles.css">
 ```
 
 ### Favicons
@@ -367,7 +369,7 @@ Below are the link relations which are not recommended for use:
 ```
 
 - [Twitter Cards: Getting Started Guide](https://dev.twitter.com/cards/getting-started)
-- [Twitter Card Validator](https://dev.twitter.com/docs/cards/validation/validator)
+- [Twitter Card Validator](https://cards-dev.twitter.com/validator)
 
 ### Google+ / Schema.org
 
@@ -376,6 +378,14 @@ Below are the link relations which are not recommended for use:
 <meta itemprop="name" content="Content Title">
 <meta itemprop="description" content="Content description less than 200 characters">
 <meta itemprop="image" content="https://example.com/image.jpg">
+```
+
+### Pinterest
+
+Pinterest lets you prevent people from saving things from your website, according [to their help center](https://help.pinterest.com/en/articles/prevent-people-saving-things-pinterest-your-site). The `description` is optional.
+
+``` html
+<meta name="pinterest" content="nopin" description="Sorry, you can't save from my website!">
 ```
 
 ### OEmbed
@@ -410,13 +420,22 @@ Below are the link relations which are not recommended for use:
 <!-- Touch Icons -->
 <link rel="apple-touch-icon" href="path/to/apple-touch-icon.png">
 <link rel="apple-touch-icon-precomposed" href="path/to/apple-touch-icon-precomposed.png">
-<!-- In most cases, one 180×180px touch icon in the head is enough -->
-<!-- If you use art-direction and/or want to have different content for each device, you can add more touch icons -->
+<!-- iOS 8+ no longer support precomposed, only apple-touch-icon is required -->
 
-<!-- Startup Image -->
+<!-- In most cases, one 180×180px touch icon in the head is enough -->
+<!-- Utilize the different icon sizes if you would want unique icons -->
+<!-- determined by device. -->
+<link rel="apple-touch-icon" sizes="57x57" href="path/to/icon@57.png">
+<link rel="apple-touch-icon" sizes="72x72" href="path/to/icon@72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="path/to/icon@114.png">
+<link rel="apple-touch-icon" sizes="144x144" href="path/to/icon@144.png">
+
+<!-- Startup Image ( Deprecated ) -->
 <link rel="apple-touch-startup-image" href="path/to/startup.png">
 
-<!-- More info: https://developer.apple.com/safari/library/documentation/appleapplications/reference/safarihtmlref/articles/metatags.html -->
+<!-- iOS app deep linking -->
+<meta name="apple-itunes-app" content="app-id=APP-ID, app-argument=http/url-sample.com">
+<link rel="alternate" href="ios-app://APP-ID/http/url-sample.com">
 ```
 
 - [Apple Meta Tags](https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html)
@@ -433,9 +452,13 @@ Below are the link relations which are not recommended for use:
 ``` html
 <meta name="theme-color" content="#E64545">
 
-<!-- Add to homescreen -->
+<!-- Add to home screen -->
 <meta name="mobile-web-app-capable" content="yes">
 <!-- More info: https://developer.chrome.com/multidevice/android/installtohomescreen -->
+
+<!-- Android app deep linking -->
+<meta name="google-play-app" content="app-id=package-name">
+<link rel="alternate" href="android-app://package-name/http/url-sample.com">
 ```
 
 ### Google Chrome
@@ -446,6 +469,27 @@ Below are the link relations which are not recommended for use:
 <!-- Disable translation prompt -->
 <meta name="google" value="notranslate">
 ```
+### Google Chrome Mobile (Android Only)
+
+Since Chrome 31, you can set up your web app to "app mode" like Safari.
+
+``` html
+<!-- Link to a manifest and define the manifest metadata. -->
+<!-- The example of manifest.json could be found in the link below. -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Define your web page as a web app -->
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- The first one is the official recommended format.  -->
+<link rel="icon" sizes="192x192" href="nice-highres.png">
+<link rel="icon" sizes="128x128" href="niceicon.png">
+<!-- Formats with Apple prefix will be deprecated. -->
+<link rel="apple-touch-icon" sizes="128x128" href="niceicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="128x128" href="niceicon.png">
+```
+
+[Google Developer](https://developer.chrome.com/multidevice/android/installtohomescreen)
 
 ### Microsoft Internet Explorer
 
@@ -474,7 +518,7 @@ Below are the link relations which are not recommended for use:
 <meta name="msapplication-square70x70logo" content="path/to/tinylogo.png">
 <meta name="msapplication-wide310x150logo" content="path/to/widelogo.png">
 <meta name="msapplication-task" content="name=Check Order Status;action-uri=./orderStatus.aspx?src=IE9;icon-uri=./favicon.ico">
-<meta name="msapplication-task-seperator" content="1">
+<meta name="msapplication-task-separator" content="1">
 <meta name="msapplication-TileColor" content="#FF3300">
 <meta name="msapplication-TileImage" content="path/to/tileimage.jpg">
 <meta name="msapplication-window" content="width=1024;height=768">
@@ -588,6 +632,8 @@ Example:
 ## Translations
 
 - [Brazilian Portuguese](https://github.com/Webschool-io/HEAD)
+- [Chinese (Simplified)](https://github.com/Amery2010/HEAD)
+- [Italian](https://github.com/Fakkio/HEAD)
 - [Japanese](http://coliss.com/articles/build-websites/operation/work/collection-of-html-head-elements.html)
 - [Russian/Русский](https://github.com/Konfuze/HEAD)
 
@@ -596,6 +642,7 @@ Example:
 Open an issue or a pull request to suggest changes or additions.
 
 Please follow these steps for pull requests:
+
 - Modify only one tag, or one related set of tags at a time
 - Use double quotes on attributes
 - Don't include a trailing slash in self-closing elements — the HTML5 spec says they're optional
@@ -611,6 +658,6 @@ Check out all the super awesome [contributors](https://github.com/joshbuchea/HEA
 
 ## License
 
-[CC0 License](LICENSE)
+[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
 
-![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png "CC0")
+To the extent possible under law, [Josh Buchea](http://joshbuchea.com) has waived all copyright and related or neighboring rights to this work.
